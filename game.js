@@ -15,8 +15,9 @@ function main(currentTime) {
 
 function youlose(){
   if (confirm('Hai perso; premi OK per fare in altra partita')) {
-    window.location = '/'
-  }
+   // window.location = '/'  vecchia funzione, è migliore utilizzare location.reload()
+    location.reload(); 
+ }
 }
   window.requestAnimationFrame(main)
   const secondsSinceLastRender = (currentTime - lastRenderTime) / 1000
