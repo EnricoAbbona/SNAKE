@@ -66,24 +66,24 @@ window.addEventListener(
     if (Math.abs(deltaX) > Math.abs(deltaY)) {
       // Scorrimento orizzontale
       if (deltaX > 0) {
-        if (lastInputDirection.x !== 0);
+        if (lastInputDirection.x == 0) {
         inputDirection = { x: -1, y: 0 };
-        console.log("Scorrimento verso sinistra");
+        console.log("Scorrimento verso sinistra");}
       } else {
-        if (lastInputDirection.x !== 0) ;
+        if (lastInputDirection.x == 0) {
         inputDirection = { x: 1, y: 0 };
-        console.log("Scorrimento verso destra");
+        console.log("Scorrimento verso destra");}
       }
     } else {
       // Scorrimento verticale
       if (deltaY > 0) {
-        if (lastInputDirection.y !== 0) ;
+        if (lastInputDirection.y == 0) {
         inputDirection = { x: 0, y: -1 };
-        console.log("Scorrimento verso l'alto");
+        console.log("Scorrimento verso l'alto");}
       } else {
-        if (lastInputDirection.y !== 0) ;
+        if (lastInputDirection.y == 0) { 
         inputDirection = { x: 0, y: 1 };
-        console.log("Scorrimento verso il basso");
+        console.log("Scorrimento verso il basso");}
       }
     }
   },
