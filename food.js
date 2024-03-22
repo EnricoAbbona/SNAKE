@@ -7,7 +7,9 @@ const EXPANSION_RATE = 6 // QUESTA COSTANTE GESTISCE L'ESPANSIONE DELLO SNAKE
 
 let pseudonimo = localStorage.getItem('nickname');
 if (!pseudonimo) { 
+  do{
   pseudonimo= prompt("Metti il tuo nickname");
+  } while (!pseudonimo);
   localStorage.setItem('nickname', pseudonimo);
 }
 console.log("il tuo nickname è: " + pseudonimo);
