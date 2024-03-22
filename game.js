@@ -1,48 +1,54 @@
-import { update as updateSnake, draw as drawSnake, SNAKE_SPEED, getSnakeHead, snakeIntersection } from './snake.js'
-import { update as updateFood, draw as drawFood } from './food.js'
-import { outsideGrid } from './grid.js'
+import {
+  update as updateSnake,
+  draw as drawSnake,
+  SNAKE_SPEED,
+  getSnakeHead,
+  snakeIntersection,
+} from "./snake.js";
+import { update as updateFood, draw as drawFood } from "./food.js";
+import { outsideGrid } from "./grid.js";
 
-let lastRenderTime = 0
-let gameOver = false
-const gameBoard = document.getElementById('game-board')
+let lastRenderTime = 0;
+let gameOver = false;
+const gameBoard = document.getElementById("game-board");
 
 function main(currentTime) {
   if (gameOver) {
-    document.getElementById('schermatafinale').style.display = "block";
-    setTimeout(youlose, 500)
-    return
+    document.getElementById("schermatafinale").style.display = "block";
+    setTimeout(youlose, 500);
+    return;
   }
 
-function youlose(){
-  if (confirm('Hai perso; premi OK per fare in altra partita')) {
-   // window.location = '/'  vecchia funzione, è migliore utilizzare location.reload()
-    location.reload(); 
- }
+  function youlose() {
+    if (confirm("Hai perso; premi OK per fare in altra partita")) {
+      location.reload();
+    }
+  }
+
+  window.requestAnimationFrame(main);
+  const secondsSinceLastRender = (currentTime - lastRenderTime) / 1000;
+  if (secondsSinceLastRender < 1 / SNAKE_SPEED) return;
+
+  lastRenderTime = currentTime;
+
+  update();
+  draw();
 }
-  window.requestAnimationFrame(main)
-  const secondsSinceLastRender = (currentTime - lastRenderTime) / 1000
-  if (secondsSinceLastRender < 1 / SNAKE_SPEED) return
 
-  lastRenderTime = currentTime
-
-  update()
-  draw()
-}
-
-window.requestAnimationFrame(main)
+window.requestAnimationFrame(main);
 
 function update() {
-  updateSnake()
-  updateFood()
-  checkDeath()
+  updateSnake();
+  updateFood();
+  checkDeath();
 }
 
 function draw() {
-  gameBoard.innerHTML = ''
-  drawSnake(gameBoard)
-  drawFood(gameBoard)
+  gameBoard.innerHTML = "";
+  drawSnake(gameBoard);
+  drawFood(gameBoard);
 }
 
 function checkDeath() {
-  gameOver = outsideGrid(getSnakeHead()) || snakeIntersection()
+  gameOver = outsideGrid(getSnakeHead()) || snakeIntersection();
 }

@@ -1,13 +1,19 @@
 import { onSnake, expandSnake } from './snake.js'
 import { randomGridPosition } from './grid.js'
 
-
 let punteggio=0;
 let food = getRandomFoodPosition()
 const EXPANSION_RATE = 6 // QUESTA COSTANTE GESTISCE L'ESPANSIONE DELLO SNAKE
 
-let migliorPunteggio = localStorage.getItem('miglior_punteggio');
+let pseudonimo = localStorage.getItem('nickname');
+if (!pseudonimo) { 
+  pseudonimo= prompt("Metti il tuo nickname");
+  localStorage.setItem('nickname', pseudonimo);
+}
+console.log("il tuo nickname è: " + pseudonimo);
+document.getElementById('nickname').textContent = pseudonimo;
 
+let migliorPunteggio = localStorage.getItem('miglior_punteggio');
         if (!migliorPunteggio) {
             migliorPunteggio = 0;
         }
