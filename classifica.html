@@ -3,47 +3,58 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Snake leaderboard</title>
-<link rel="icon" type="image/x-icon" href="resources/snake.ico" />
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-</head>
-<body>
-
-<h2>Top 10 players</h2>
-
-<table id="snake-table" border="1">
-  <thead>
-    <tr>
-      <th>Nickname</th>
-      <th>Miglior punteggio</th>
-    </tr>
-  </thead>
-  <tbody id="snake-table-body">
-  </tbody>
-</table>
-
+<title>Classifica snake</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
 $(document).ready(function(){
-    $.ajax({
-        url: 'https://snakeabbo.000webhostapp.com/fetch_snake_data.php',
-        type: 'GET',
-        dataType: 'json',
-        success: function(response){
-            if(response.success) {
-                var tableBody = $('#snake-table-body');
-                $.each(response.data, function(index, row) {
-                    tableBody.append('<tr><td>' + row.pseudonimo + '</td><td>' + row.miglior_giocata + '</td></tr>');
-                });
-            } else {
-                console.log('Errore nel recupero dei dati');
+    // Funzione per caricare i dati tramite AJAX e popolare le tabelle
+    function caricaDati() {
+        // Chiamata AJAX per ottenere i dati dei giocatori con mobile = false
+        $.ajax({
+            url: 'https://snakeabbo.000webhostapp.com/other/fetch_snake_data.php',
+            type: 'GET',
+            data: { mobile: false },
+            success: function(data) {
+                $('#tabella1').html(data); // Popola la prima tabella con i dati ottenuti
             }
-        },
-        error: function(xhr, status, error) {
-            console.error('Errore AJAX:', error);
-        }
-    });
+        });
+        
+        // Chiamata AJAX per ottenere i dati dei giocatori con mobile = true
+        $.ajax({
+            url: 'https://snakeabbo.000webhostapp.com/other/fetch_snake_data.php',
+            type: 'GET',
+            data: { mobile: true },
+            success: function(data) {
+                $('#tabella2').html(data); // Popola la seconda tabella con i dati ottenuti
+            }
+        });
+    }
+    
+    // Chiama la funzione caricaDati() quando la pagina è pronta
+    caricaDati();
 });
 </script>
+</head>
+<body>
+<h1>TOP 10 CLASSIFICA SNAKE</h1>
+
+<h2>Desktop/Ipad</h2>
+<table id="tabella1" border="1">
+    <tr>
+        <th>Posizione</th>
+        <th>Nome Giocatore</th>
+        <th>Miglior Giocata</th>
+    </tr>
+</table>
+
+<h2>Smartphone</h2>
+<table id="tabella2" border="1">
+    <tr>
+        <th>Posizione</th>
+        <th>Nome Giocatore</th>
+        <th>Miglior Giocata</th>
+    </tr>
+</table>
 
 </body>
 </html>
