@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>SNAKE by Abbo - BETA</title>
+    <title>SNAKE by Abbo</title>
     <link rel="icon" type="image/x-icon" href="resources/snake.ico" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -13,41 +13,9 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="style.css" /> 
-    <script src="game.js" defer type="module"></script> 
-    <script>  
-    // AJAX inizio
-      var migliorPunteggio = localStorage.getItem('miglior_punteggio');
-      var pseudonimo = localStorage.getItem('nickname');
-      // Creare l'oggetto XMLHttpRequest
-      var xhr = new XMLHttpRequest();
+    <script src="game.js" defer type="module"></script>   
+    <script src="communication.js" defer></script>
 
-      // Definire la funzione di gestione della risposta
-      xhr.onreadystatechange = function () {
-        if (xhr.readyState === XMLHttpRequest.DONE) {
-          if (xhr.status === 200) {
-            // La richiesta è stata completata con successo
-            console.log("Dati inviati con successo!");
-          } else {
-            // Si è verificato un errore nella richiesta
-            console.error(
-              "Si è verificato un errore durante l'invio dei dati."
-            );
-          }
-        }
-      };
-
-      // Preparare i dati da inviare
-      var data = new FormData();
-      data.append("migliorPunteggio", migliorPunteggio);
-      data.append("pseudonimo", pseudonimo);
-
-      // Aprire la richiesta verso stats.php
-      xhr.open("POST", "https://snakeabbo.000webhostapp.com/stats.php", true);
-
-      // Invia la richiesta https://snakeabbo.000webhostapp.com/
-      xhr.send(data);
-      //AJAX fine
-</script>
   </head>
   <body>
     <div id="game-board"></div>
