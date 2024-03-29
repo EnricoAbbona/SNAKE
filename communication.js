@@ -23,7 +23,7 @@ console.log(mobile);
         console.error(
           "Si è verificato un errore durante l'invio dei dati."
         );
-        alert("ATTENZIONE temporaneamente la classifica non verrà aggiornata per un problema database. Puoi comunque giocare e i tuoi progressi verranno aggiornati");
+        alert("ATTENZIONE temporaneamente la classifica non verrà aggiornata per un problema del database. Puoi comunque giocare e i tuoi progressi verranno aggiornati quando il malfunzionamento verrà riparato");
       }
     }
   };
