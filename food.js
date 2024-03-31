@@ -3,7 +3,7 @@ import { randomGridPosition } from './grid.js'
 
 let punteggio=0;
 let food = getRandomFoodPosition()
-const EXPANSION_RATE = 6 // QUESTA COSTANTE GESTISCE L'ESPANSIONE DELLO SNAKE
+const EXPANSION_RATE = 7 // QUESTA COSTANTE GESTISCE L'ESPANSIONE DELLO SNAKE
 
 let pseudonimo = localStorage.getItem('nickname');
 if (!pseudonimo) { 
