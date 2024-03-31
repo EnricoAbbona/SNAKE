@@ -9,6 +9,7 @@ console.log(mobile);
  // AJAX 
   var migliorPunteggio = localStorage.getItem('miglior_punteggio');
   var pseudonimo = localStorage.getItem('nickname');
+
   // Creare l'oggetto XMLHttpRequest
   var xhr = new XMLHttpRequest();
 

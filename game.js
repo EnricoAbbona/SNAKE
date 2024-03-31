@@ -46,7 +46,7 @@ function update() {
 function draw() {
   gameBoard.innerHTML = "";
   drawSnake(gameBoard);
-  drawFood(gameBoard);
+  drawFood(gameBoard); 
 }
 
 function checkDeath() {

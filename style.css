@@ -26,10 +26,29 @@ body {
     grid-template-rows: repeat(21, 1fr);
     grid-template-columns: repeat(21, 1fr);
   }
+ 
+  .primo_rank {
+    background-color: hsl(0, 0%, 0%);
+    border: 0.25vmin solid rgb(255, 255, 255);
+  }
 
-  .snake {
+  .secondo_rank {
     background-color: hsl(120, 100%, 50%);
     border: 0.25vmin solid black;
+  }
+  .terzo_rank {
+    background-color: #804A00;
+    border: 0.25vmin solid rgb(255, 255, 255);
+  }
+
+  .quarto_rank {
+    background-color: orange;
+    border: 0.25vmin solid black;
+  }
+
+  .quinto_rank{
+    background-color: #ffe100;
+    border: 0.25vmin solid rgb(255, 255, 255);
   }
 
   .food {

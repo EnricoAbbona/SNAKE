@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Classifica snake</title>
+<link rel="icon" type="image/x-icon" href="resources/snake.ico"/>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
 $(document).ready(function(){
@@ -11,7 +12,7 @@ $(document).ready(function(){
     function caricaDati() {
         // Chiamata AJAX per ottenere i dati dei giocatori con mobile = false
         $.ajax({
-            url: 'https://snakeabbo.000webhostapp.com/other/fetch_snake_data.php',
+            url: 'https://snakeabbo.000webhostapp.com/SNAKE/fetch_snake_data.php',
             type: 'GET',
             data: { mobile: false },
             success: function(data) {
@@ -21,7 +22,7 @@ $(document).ready(function(){
         
         // Chiamata AJAX per ottenere i dati dei giocatori con mobile = true
         $.ajax({
-            url: 'https://snakeabbo.000webhostapp.com/other/fetch_snake_data.php',
+            url: 'https://snakeabbo.000webhostapp.com/SNAKE/fetch_snake_data.php',
             type: 'GET',
             data: { mobile: true },
             success: function(data) {
@@ -34,6 +35,27 @@ $(document).ready(function(){
     caricaDati();
 });
 </script>
+<style>
+  .primo_rank {
+    background-color: hsl(0, 0%, 0%);
+  }
+
+  .secondo_rank {
+    background-color: hsl(120, 100%, 50%);
+  }
+  .terzo_rank {
+    background-color: #804A00;
+  }
+
+  .quarto_rank {
+    background-color: orange;
+  }
+
+  .quinto_rank{
+    background-color: #ffe100;
+  }
+
+</style>
 </head>
 <body>
 <h1>TOP 10 CLASSIFICA SNAKE</h1>
@@ -55,6 +77,25 @@ $(document).ready(function(){
         <th>Miglior Giocata</th>
     </tr>
 </table>
+
+<h2>Skin Serpente</h2>
+<table border="1">
+    <thead>
+        <tr>
+            <th>Punteggio necessario</th>
+            <th>Skin</th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- Prima colonna con 5 righe vuote -->
+        <tr><td>MIGLIOR PUNTEGGIO <= 10</td><td class="primo_rank"></td></tr>
+        <tr><td>10 < MIGLIOR PUNTEGGIO <= 20</td><td class="secondo_rank"></td></tr>
+        <tr><td>20 < MIGLIOR PUNTEGGIO <=25</td><td class="terzo_rank"></td></tr>
+        <tr><td>25 < MIGLIOR PUNTEGGIO < 35</td><td class="quarto_rank"></td></tr>
+        <tr><td>MIGLIOR PUNTEGGIO >= 35</td><td class="quinto_rank"></td></tr>
+    </tbody>
+</table>
+
 
 </body>
 </html>
