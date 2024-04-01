@@ -10,6 +10,9 @@ if ( migliorPunteggio <=10 || migliorPunteggio == null) {
 else if (migliorPunteggio >25 && migliorPunteggio <35){
     var serpente="quarto_rank";
 }
-else if (migliorPunteggio>=35){
+else if (migliorPunteggio>=35 && migliorPunteggio < 50){
     var serpente="quinto_rank";
+}
+else if (migliorPunteggio >= 50){
+    var serpente="sesto_rank";
 }
