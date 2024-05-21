@@ -1,119 +1,88 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Classifica snake</title>
-    <link rel="icon" type="image/x-icon" href="resources/snake.ico"/>
-    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet"/>
-    <link rel="stylesheet" href="classifica.css">
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css"/>
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css"/>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
-    <link rel="stylesheet" href="ranking.css" />
-    <script>
-    $(document).ready(function(){
-        // Funzione per caricare i dati tramite AJAX e popolare le tabelle
-        function caricaDati() {
-            // Chiamata AJAX per ottenere i dati dei giocatori con mobile = false
-            $.ajax({
-                url: 'https://snakeabbo.000webhostapp.com/SNAKE/fetch_snake_data.php',
-                type: 'GET',
-                data: { mobile: false },
-                success: function(data) {
-                    $('#desktop_data').html(data); // Popola la sezione con i dati ottenuti
-                }
-            });
-            
-            // Chiamata AJAX per ottenere i dati dei giocatori con mobile = true
-            $.ajax({
-                url: 'https://snakeabbo.000webhostapp.com/SNAKE/fetch_snake_data.php',
-                type: 'GET',
-                data: { mobile: true },
-                success: function(data) {
-                    $('#mobile_data').html(data); // Popola la sezione con i dati ottenuti
-                }
-            });
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Classifica snake</title>
+<link rel="icon" type="image/x-icon" href="resources/snake.ico"/>
+<link
+  href="https://fonts.googleapis.com/css?family=Press+Start+2P"
+  rel="stylesheet"
+/>
+<link rel="stylesheet" href="classifica.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+    // Funzione per caricare i dati tramite AJAX e popolare le tabelle
+    function caricaDati() {
+        // Chiamata AJAX per ottenere i dati dei giocatori con mobile = false
+        $.ajax({
+            url: 'https://snakeabbo.000webhostapp.com/SNAKE/fetch_snake_data.php',
+            type: 'GET',
+            data: { mobile: false },
+            success: function(data) {
+                $('#tabella1').html(data); // Popola la prima tabella con i dati ottenuti
+            }
+        });
         
-        // Inizializza la funzione caricaDati() quando la pagina è pronta
-        caricaDati();
-
-        // Inizializza il carosello
-        $('.carousel').slick({
-            infinite: false, // Disable looping
-            slidesToShow: 1,
-            slidesToScroll: 1,
-            arrows: false,
-            dots: true
+        // Chiamata AJAX per ottenere i dati dei giocatori con mobile = true
+        $.ajax({
+            url: 'https://snakeabbo.000webhostapp.com/SNAKE/fetch_snake_data.php',
+            type: 'GET',
+            data: { mobile: true },
+            success: function(data) {
+                $('#tabella2').html(data); // Popola la seconda tabella con i dati ottenuti
+            }
         });
-
-        // Aggiungi eventi per i bottoni di navigazione
-        $('#prevButton').click(function(){
-            $('.carousel').slick('slickPrev');
-        });
-
-        $('#nextButton').click(function(){
-            $('.carousel').slick('slickNext');
-        });
-    });
-    </script>
+    }
+    
+    // Chiama la funzione caricaDati() quando la pagina è pronta
+    caricaDati();
+});
+</script>
+<link rel="stylesheet" href="ranking.css" /> 
 </head>
 <body>
-    <div class="carousel-container">
-        <div class="carousel">
-            <div class="elemento_carosello">
-                <h2 class="device">Desktop</h2>
-                    <div id="desktop_data">
-                        <table border="1">
-                            <tr>
-                                <th>Posizione</th>
-                                <th>Nome Giocatore</th>
-                                <th>Miglior Giocata</th>
-                            </tr>
-                        </table>
-                    </div>
-                </div>
-            <div class="elemento_carosello">
-                <h2 class="device">Smartphone</h2>
-                <div id="mobile_data">
-                    <table border="1">
-                        <tr>
-                            <th>Posizione</th>
-                            <th>Nome Giocatore</th>
-                            <th>Miglior Giocata</th>
-                        </tr>
-                    </table>
-                </div>
-            </div>
-            <div class="elemento_carosello">
-                <h2>Skin Serpente</h2>
-                <div>
-                    <table border="1">
-                        <thead>
-                            <tr>
-                                <th>Descrizione</th>
-                                <th>Punteggio necessario</th>
-                                <th>Skin</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr><td>NABBETTO</td><td>MIGLIOR PUNTEGGIO <= 10</td><td class="primo_rank rank_legend"></td></tr>
-                            <tr><td>appena DECENTE</td><td>10 < MIGLIOR PUNTEGGIO <= 20</td><td class="secondo_rank rank_legend"></td></tr>
-                            <tr><td>puoi far meglio...</td><td>20 < MIGLIOR PUNTEGGIO <=25</td><td class="terzo_rank rank_legend"></td></tr>
-                            <tr><td>BRAVINO</td><td>25 < MIGLIOR PUNTEGGIO < 35</td><td class="quarto_rank rank_legend"></td></tr>
-                            <tr><td>FORTE ma non troppo</td><td>35 <= MIGLIOR PUNTEGGIO < 50</td><td class="quinto_rank rank_legend"></td></tr>
-                            <tr><td>DIVINITA' di snake</td><td>MIGLIOR PUNTEGGIO >= 50</td><td class="sesto_rank rank_legend"></td></tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="nav-buttons">
-        <button id="prevButton">&lt;</button>
-        <button id="nextButton">&gt;</button>
-    </div>
+<h1>TOP 10 CLASSIFICA SNAKE</h1>
+
+<h2 class="device">Desktop</h2>
+<table id="tabella1" border="1">
+    <tr>
+        <th>Posizione</th>
+        <th>Nome Giocatore</th>
+        <th>Miglior Giocata</th>
+    </tr>
+</table>
+
+<h2 class="device">Smartphone</h2>
+<table id="tabella2" border="1">
+    <tr>
+        <th>Posizione</th>
+        <th>Nome Giocatore</th>
+        <th>Miglior Giocata</th>
+    </tr>
+</table>
+
+<h2>Skin Serpente</h2>
+<table border="1">
+    <thead>
+        <tr>
+            <th>Descrizione</th>
+            <th>Punteggio necessario</th>
+            <th>Skin</th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- Prima colonna con 5 righe vuote -->
+        <tr><td>NABBETTO</td><td>MIGLIOR PUNTEGGIO <= 10</td><td class="primo_rank"></td></tr>
+        <tr><td>appena DECENTE</td><td>10 < MIGLIOR PUNTEGGIO <= 20</td><td class="secondo_rank"></td></tr>
+        <tr><td>puoi far meglio...</td><td>20 < MIGLIOR PUNTEGGIO <=25</td><td class="terzo_rank"></td></tr>
+        <tr><td>BRAVINO</td><td>25 < MIGLIOR PUNTEGGIO < 35</td><td class="quarto_rank"></td></tr>
+        <tr><td>FORTE ma non troppo</td><td>35 <= MIGLIOR PUNTEGGIO < 50 </td><td class="quinto_rank"></td></tr>
+        <tr><td>DIVINITA' di snake</td><td>MIGLIOR PUNTEGGIO >= 50</td><td class="sesto_rank"></td></tr>
+    </tbody>
+</table>
+
+
 </body>
 </html>

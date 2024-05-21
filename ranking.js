@@ -1,5 +1,3 @@
-var migliorPunteggio = localStorage.getItem('miglior_punteggio');
-
 if ( migliorPunteggio <=10 || migliorPunteggio == null) {
     var serpente = "primo_rank";
  }
@@ -15,9 +13,6 @@ else if (migliorPunteggio >25 && migliorPunteggio <35){
 else if (migliorPunteggio>=35 && migliorPunteggio < 50){
     var serpente="quinto_rank";
 }
-else if (migliorPunteggio >= 50 && migliorPunteggio < 62){
+else if (migliorPunteggio >= 50){
     var serpente="sesto_rank";
-}
-else if (migliorPunteggio >=62){
-    var serpente = "settimo_rank"
 }
