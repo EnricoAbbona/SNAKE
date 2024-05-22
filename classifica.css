@@ -1,4 +1,85 @@
-/*table, .device {
-    font-family: 'Press Start 2P', cursive;
-    font-size:small;
-  }*/
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap'); /*monserrat*/
+
+@media only screen and (max-width: 480px) {
+  .tablemobile {
+      overflow-x: auto;
+      display: block;
+  }
+}
+
+body{
+  /*font-family: "Orbitron", sans-serif;*/
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  background-color: #121212; /* colore di sfondo scuro */
+  color: #ffffff; /* colore del testo principale */
+}
+
+.table-title{
+  text-align: center;
+  color: #E97451; /* colore del titolo della tabella */
+}
+
+.table-container {
+  width: 100%;
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 1px 2px;
+  border: 1px solid #ffffff; /* colore del bordo della tabella */
+  text-align: center;
+}
+
+.color_legend{
+  border: 0.25vmin solid white !important; /* colore del bordo delle celle */
+}
+
+/* Nuovo CSS per il carosello */
+.carousel-container {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.carousel-inner {
+  display: flex;
+  transition: transform 0.5s ease;
+}
+
+.carousel-item {
+  min-width: 100%;
+  box-sizing: border-box;
+  background-color: #333; /* colore di sfondo scuro per i carousel-item */
+  border-radius: 10px
+  10px; /* border-radius per arrotondare gli angoli */
+  padding: 20px; /* padding per spaziatura interna */
+}
+
+/* Bottoni di navigazione */
+.carousel-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.658);
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.carousel-button.prev {
+  left: 10px;
+}
+
+.carousel-button.next {
+  right: 10px;
+}
