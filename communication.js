@@ -34,8 +34,7 @@ console.log(mobile);
   data.append("migliorPunteggio", migliorPunteggio);
   data.append("pseudonimo", pseudonimo);
   data.append("mobile", mobile);
-  //https://snakeabbo.000webhostapp.com/SNAKE/stats.php   link richiesta 000webhost.  stats.php LINK DESKTOP
-  let link_richiesta= "https://snakeabbo.000webhostapp.com/SNAKE/stats.php";
+  let link_richiesta= "https://mediumseagreen-worm-177476.hostingersite.com/SNAKE/stats.php";
   // Aprire la richiesta verso stats.php
   xhr.open("POST", link_richiesta, true);
   xhr.send(data);
