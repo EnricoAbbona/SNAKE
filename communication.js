@@ -9,7 +9,7 @@ console.log(mobile);
  // AJAX 
   var migliorPunteggio = localStorage.getItem('miglior_punteggio');
   var pseudonimo = localStorage.getItem('nickname');
-
+  var lastPunteggio = localStorage.getItem('lastPunteggio');
   // Creare l'oggetto XMLHttpRequest
   var xhr = new XMLHttpRequest();
 
@@ -24,7 +24,11 @@ console.log(mobile);
         console.error(
           "Si è verificato un errore durante l'invio dei dati."
         );
-        alert("ATTENZIONE temporaneamente la classifica non verrà aggiornata per un problema del database. Puoi comunque giocare e i tuoi progressi verranno aggiornati quando il malfunzionamento verrà riparato");
+        alert(`ATTENTION just temporarily the ranking won't be updated due to a DB problem.
+        However you can keep playing: your progresses will be saved on your devices and updated as soon as the problem is fixed`);  
+        
+        //ATTENZIONE temporaneamente la classifica non verrà aggiornata per un problema del database. 
+        //Puoi comunque giocare e i tuoi progressi verranno aggiornati quando il malfunzionamento verrà riparato"); old message
       }
     }
   };
@@ -34,6 +38,7 @@ console.log(mobile);
   data.append("migliorPunteggio", migliorPunteggio);
   data.append("pseudonimo", pseudonimo);
   data.append("mobile", mobile);
+  data.append("lastPunteggio", lastPunteggio); 
   let link_richiesta= "https://mediumseagreen-worm-177476.hostingersite.com/SNAKE/stats.php";
   // Aprire la richiesta verso stats.php
   xhr.open("POST", link_richiesta, true);

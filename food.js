@@ -2,6 +2,11 @@ import { onSnake, expandSnake } from './snake.js'
 import { randomGridPosition } from './grid.js'
 
 let punteggio=0;
+
+if (localStorage.getItem('miglior_punteggio') === null) {
+  localStorage.setItem('lastPunteggio', punteggio); 
+}
+
 let food = getRandomFoodPosition()
 const EXPANSION_RATE = 5 // QUESTA COSTANTE GESTISCE L'ESPANSIONE DELLO SNAKE
 
@@ -31,6 +36,7 @@ export function update() {
     punteggio++;
     console.log(punteggio);
     document.getElementById('punteggio').innerHTML = punteggio;
+    localStorage.setItem('lastPunteggio', punteggio); //add
 
     // aggiornamento miglior punteggio
     if (punteggio>migliorPunteggio){
